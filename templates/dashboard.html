@@ -1,0 +1,81 @@
+
+
+
+{% extends "base.html" %}
+{% block content %}
+
+
+{# -------- EMPLOYER DASHBOARD -------- #}
+{% if current_user.role == 'employer' %}
+
+<div class="text-center mt-5">
+    <h2 class="display-6 fw-bold">Welcome, {{ current_user.name }} ({{ current_user.role }})</h2>
+    <h2>Your Dashboard</h2>
+
+    <a href="{{ url_for('routes.post_job') }}" class="btn btn-outline-primary btn-lg mt-3">Post Job</a>
+    <a href="{{ url_for('routes.my_jobs') }}" class="btn btn-outline-success btn-lg mt-3">My Jobs</a>
+
+ </div>   
+
+
+
+{# -------- SEEKER DASHBOARD -------- #}
+{% elif current_user.role == 'seeker' %}
+
+<div class="text-center mt-5">
+    <h2 class="display-6 fw-bold">Welcome, {{ current_user.name }} ({{ current_user.role }})</h2>
+</div>
+    <h2>Your Dashboard</h2>
+
+    {% if current_user.resume %}
+        <p><strong>Your Resume:</strong>
+            <a href="{{ url_for('static', filename='uploads/' + current_user.resume) }}" target="_blank">View Resume</a>
+            
+
+        </p>
+
+        
+    {% else %}
+        <p><em>No resume uploaded yet.</em></p>
+    {% endif %}
+
+
+    <form method="GET" action="{{ url_for('routes.dashboard') }}" class="row g-3 mb-4 mt-4">
+        <div class="col-md-5">
+            <input type="text" name="title" class="form-control" placeholder="Search by job title" value="{{ request.args.get('title', '') }}">
+        </div>
+        <div class="col-md-5">
+            <input type="text" name="location" class="form-control" placeholder="Search by location" value="{{ request.args.get('location', '') }}">
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Search</button>
+        </div>
+    </form>
+
+
+        <h5>Results of <span>JOB OPENING.....</span> </h5>
+
+
+<ul class="list-group row g-3 mb-4 mt-4">
+{% for job in jobs %}
+<li class="list-group-item">
+        
+            <h3>{{ job.title }}</h3>
+            <p><strong>Company:</strong> {{ job.company }}</p>
+            <p><strong>Location:</strong> {{ job.location }}</p>
+            <p><strong>Type:</strong> {{ job.job_type }}</p>
+            <p>{{ job.description }}</p>
+            <hr>
+            <a href="{{ url_for('routes.apply_job', job_id=job.id) }}" class="btn btn-success btn-lg mt-2">Apply</a>
+
+    
+          
+    {% else %}
+        <p>No jobs found.</p>
+    {% endfor %}
+    
+{% endif %}
+</li>
+    </ul>  
+
+{% endblock %}

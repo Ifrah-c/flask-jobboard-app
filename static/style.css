@@ -1,0 +1,73 @@
+@media (max-width: 576px) {
+  .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  h1, h2, h3 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+}
+
+
+
+/* Navbar styling */
+.navbar {
+  background-color: #343a40 !important; /* dark professional */
+  box-shadow: 0 4px 6px rgba(179, 188, 191, 0);
+}
+
+.navbar-brand span {
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+.navbar-brand span:hover {
+  color: #f8f9fa;
+}
+
+.navbar-nav .nav-link {
+  color: #ffffff !important;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #00bcd4 !important;
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+
+
+.hero-section {
+  height: 70vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-shadow: 1px 1px 4px #000;
+}
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.hero-section h1, .hero-section p {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+  body {
+   
+    min-height: 100vh;
+  }
+
+
+  

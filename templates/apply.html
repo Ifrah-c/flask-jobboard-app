@@ -1,0 +1,34 @@
+
+
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    
+
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            {{ form.message.label(class="form-label") }}
+            {{ form.message(class="form-control", rows="4", placeholder="Write a message to the employer...") }}
+            {% if form.message.errors %}
+                <div class="text-danger">{{ form.message.errors[0] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.resume.label(class="form-label") }}
+            {{ form.resume(class="form-control") }}
+            {% if form.resume.errors %}
+                <div class="text-danger">{{ form.resume.errors[0] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.submit(class="btn btn-primary") }}
+            <a href="{{ url_for('routes.dashboard') }}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

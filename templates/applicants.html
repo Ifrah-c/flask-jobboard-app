@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Applicants for {{ job.title }} at {{ job.company }}</h3>
+
+{% if applicants %}
+    <ul class="list-group">
+        {% for app in applicants %}
+        <li class="list-group-item">
+            <h5>{{ app.seeker.name }} ({{ app.seeker.email }})</h5>
+            <p><strong>Applied:</strong> {{ app.timestamp.strftime("%Y-%m-%d %H:%M") }}</p>
+            {% if app.seeker.resume %}
+                <p><a href="{{ url_for('static', filename='uploads/' + app.seeker.resume) }}" target="_blank">Download Resume</a></p>
+            {% endif %}
+            {% if app.message %}
+                <p><strong>Message:</strong> {{ app.message }}</p>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No applicants yet.</p>
+    <a href="{{ url_for('routes.my_jobs') }}" class="btn btn-outline-success btn-lg mt-3">Go to my Jobs</a>
+    <a href="{{ url_for('routes.post_job') }}" class="btn btn-outline-primary btn-lg mt-3">Post new Job</a>
+{% endif %}
+{% endblock %}

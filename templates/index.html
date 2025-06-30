@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<!-- Hero Section -->
+<div class="hero-section text-white text-center d-flex align-items-center justify-content-center"
+     style="background-image: url('/static/images/job-bg.gif'); height: 70vh; background-size: cover; background-position: center;">
+  <div>
+    <h1 class="display-4 fw-bold">Find Your Dream Job</h1>
+    <p class="lead">Connect with top employers. Apply with ease.</p>
+    
+  </div>
+</div>
+
+
+    
+
+    {% if not current_user.is_authenticated %}
+
+   <div class="text-center ">
+        
+        <small>Don't have an account?<a href="{{ url_for('routes.register') }}" class="btn btn-success btn-lg mt-2 ms-1">Register</a></small>
+   <div>
+        <small>Already have an account<a href="{{ url_for('routes.login') }}" class="btn btn-primary btn-lg mt-2 ms-1">Login</a></small>
+        </div>
+    {% else %}
+        {% if current_user.role == 'seeker' %}
+            <a href="{{ url_for('routes.dashboard') }}" class="btn btn-outline-info btn-lg mt-3">Go to Dashboard</a>
+        {% elif current_user.role == 'employer' %}
+            <a href="{{ url_for('routes.post_job') }}" class="btn btn-outline-primary btn-lg mt-3">Post Job</a>
+            <a href="{{ url_for('routes.my_jobs') }}" class="btn btn-outline-success btn-lg mt-3">My Jobs</a>
+        {% endif %}
+    {% endif %}
+</div>
+
+
+
+<!-- Features Section -->
+<div class="container my-5">
+  <div class="row text-center">
+    <div class="col-md-4 mb-4" data-aos="fade-up">
+      <img src="/static/images/hiring.png" class="img-fluid mb-3" style="height: 100px;" alt="Hiring">
+      <h4 class="fw-bold">Quick Hiring</h4>
+      <p>Employers can post jobs and hire the right candidates quickly and easily.</p>
+    </div>
+    <div class="col-md-4 mb-4" data-aos="fade-up"> 
+      <img src="/static/images/career.png" class="img-fluid mb-3" style="height: 100px;" alt="Career">
+      <h4 class="fw-bold">Career Growth</h4>
+      <p>Job seekers can find the best opportunities suited to their skills and passion.</p>
+    </div>
+    <div class="col-md-4 mb-4" data-aos="fade-up">
+      <img src="/static/images/support.png" class="img-fluid mb-3" style="height: 100px;" alt="Support">
+      <h4 class="fw-bold">24/7 Support</h4>
+      <p>We are here to help you any time with your job search or hiring process.</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
