@@ -18,20 +18,19 @@
 {% else %}
     <p class="mt-4">You haven't posted any jobs yet.</p>
     
-    <div class="text-center ">
     
-       <a href="{{ url_for('routes.post_job') }}" class="btn btn-primary btn-lg mt-3">Post Job</a>
+    
+       <a href="{{ url_for('routes.post_job') }}" class="btn btn-primary btn-lg">Post Job</a>
 
-    </div>
 {% endfor %}
     </ul>
     
 {% endif %}
-   <div class="text-center mt-4">
+   
 
       <a href="{{ url_for('routes.dashboard') }}" class="btn btn-success btn-lg ">Back</a>
 
-   </div>
+   
 
 
 
