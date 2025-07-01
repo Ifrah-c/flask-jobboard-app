@@ -18,7 +18,7 @@
 
         <div class="mb-3">
             {{ form.resume.label(class="form-label") }}
-            {{ form.resume(class="form-control") }}
+            {{ form.resume(class="form-control",placeholder="only pdf,doc,docx,png files allowed") }}
             {% if form.resume.errors %}
                 <div class="text-danger">{{ form.resume.errors[0] }}</div>
             {% endif %}
