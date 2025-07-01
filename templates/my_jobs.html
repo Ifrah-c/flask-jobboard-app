@@ -13,8 +13,7 @@
 
             <a href="{{ url_for('routes.view_applicants', job_id=job.id) }}" class="btn btn-outline-info btn-sm ">View Applicants</a>
           </li>
-        {% endfor %}
-    </ul>
+        
     
 {% else %}
     <p class="mt-4">You haven't posted any jobs yet.</p>
@@ -24,7 +23,8 @@
        <a href="{{ url_for('routes.post_job') }}" class="btn btn-primary btn-lg mt-3">Post Job</a>
 
     </div>
-
+{% endfor %}
+    </ul>
     
 {% endif %}
    <div class="text-center mt-4">
