@@ -3,6 +3,7 @@
 <h3>Applicants for {{ job.title }} at {{ job.company }}</h3>
 
 {% if applicants %}
+<div>
     <ul class="list-group">
         {% for app in applicants %}
         <li class="list-group-item">
@@ -15,9 +16,13 @@
                 <p><strong>Message:</strong> {{ app.message }}</p>
             {% endif %}
         </li>
-        <a href="{{ url_for('routes.my_jobs') }}" class="btn btn-outline-success btn-lg mt-3">Back</a>
+        
         {% endfor %}
     </ul>
+    </div>
+    <div class="text-center mt-4">
+    <a href="{{ url_for('routes.my_jobs') }}" class="btn btn-outline-success btn-lg ">Back</a>
+    </div>
 {% else %}
     <p>No applicants yet.</p>
     <a href="{{ url_for('routes.my_jobs') }}" class="btn btn-outline-success btn-lg mt-3">Go to my Jobs</a>
