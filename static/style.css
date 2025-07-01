@@ -64,10 +64,20 @@
 .hero-section h1, .hero-section p {
   text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
-  body {
-   
-    min-height: 100vh;
-  }
+  
+
+
+  html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+body > main {
+  flex: 1;
+}
+
 
 
   
