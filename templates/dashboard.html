@@ -68,14 +68,14 @@
             <hr>
             <a href="{{ url_for('routes.apply_job', job_id=job.id) }}" class="btn btn-success btn-lg mt-2">Apply</a>
 
-    
-          
+    </li>
+     {% endfor %}
+       </ul>  
+  
     {% else %}
         <p>No jobs found.</p>
-    {% endfor %}
     
 {% endif %}
-</li>
-    </ul>  
-
+{% endif %}
+    
 {% endblock %}
