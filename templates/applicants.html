@@ -15,6 +15,7 @@
                 <p><strong>Message:</strong> {{ app.message }}</p>
             {% endif %}
         </li>
+        <a href="{{ url_for('routes.my_jobs') }}" class="btn btn-outline-success btn-lg mt-3">Back</a>
         {% endfor %}
     </ul>
 {% else %}
