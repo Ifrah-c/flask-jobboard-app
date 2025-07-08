@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Admin Dashboard</h2>
+
+    <h4 class="mt-4">Users</h4>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Resume</th></tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.role }}</td>
+                <td>
+                  {% if user.resume %}
+                    <a href="{{ url_for('static', filename='uploads/' ~ user.resume) }}" target="_blank">View Resume</a>
+                  {% else %}
+                    <em>No resume</em>
+                  {% endif %}
+                </td>
+                
+
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h4 class="mt-4">Job Opening</h4>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr><th>ID</th><th>Title</th><th>Company</th><th>Location</th><th>Job Type</th><th>Job Description</th><th>Posted Date</th><th>Posted By</th></tr>
+        </thead>
+        <tbody>
+            {% for job in jobs %}
+            <tr>
+                <td>{{ job.id }}</td>
+                <td>{{ job.title }}</td>
+                <td>{{ job.company }}</td>
+                <td>{{ job.location }}</td>
+                <td>{{ job.job_type }}</td>
+                <td>{{ job.description }}</td>
+                <td>{{ job.date_posted }}</td>
+
+                <td>{{ job.posted_by }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h4 class="mt-4">Applications</h4>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr><th>ID</th><th>Job Title</th><th>User Id No</th><th>Resume</th><th>date_applied </th><th>message</th></tr>
+        </thead>
+        <tbody>
+            {% for app in applications %}
+            <tr>
+                <td>{{ app.id }}</td>
+                <td>{{ app.job.title }}</td>
+                <td>{{ app.user_id}}</td>
+                <td>
+                    {% if app.resume_filename %}
+                    <a href="{{ url_for('static', filename='uploads/' ~ app.resume_filename) }}" target="_blank">View Resume</a>
+                  {% else %}
+                    <em>No resume</em>
+                  {% endif %}
+                </td>
+                <td>{{ app.date_applied }}</td>
+                <td>{{ app.message}}</td>
+                
+                
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

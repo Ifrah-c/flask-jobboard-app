@@ -35,16 +35,28 @@
     </button>
 
 
-    
-    <div class="collapse navbar-collapse" id="navbarNav">
+  
+
       
       <ul class="navbar-nav ms-auto">
         {% if current_user.is_authenticated %}
          <div class="card shadow-lg  me-3" ><li class="nav-item"><a class="nav-link " href="{{ url_for('routes.dashboard') }}">Dashboard</a></li></div>
+
+        {% if current_user.role == 'admin' %}
+        <div class="card shadow-lg me-3">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('routes.admin_dashboard') }}">Admin Dashboard</a>
+            </li>
+        </div>
+        {% endif %}
+
         <div class="card shadow-lg me-3" ><li class="nav-item"><a class="nav-link " href="{{ url_for('routes.logout') }}">Logout</a></li></div>
         <div class="card shadow-lg  me-3" ><li class="nav-item"><a class="nav-link " href="{{ url_for('routes.home') }}">Home</a></li></div>
+
         
-          
+    
+
+
           {% else %}
         <div class="card shadow-lg me-3" ><li class="nav-item"><a class="nav-link " href="{{ url_for('routes.login') }}" class="btn btn-primary btn-sm me-2" >Login</a></li></div>
           <div class="card shadow-lg  me-3"> <li class="nav-item"><a class="nav-link " href="{{ url_for('routes.register') }}" class="btn btn-success btn-sm">Register</a></li></div> 
@@ -53,7 +65,6 @@
           
       </ul>
       
-    </div>
   </div>
 </nav>
 

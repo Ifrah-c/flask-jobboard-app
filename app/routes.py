@@ -10,6 +10,20 @@ from flask_mail import Message
 
 bp = Blueprint("routes", __name__)
 
+@bp.route('/admin')
+@login_required
+def admin_dashboard():
+    # Optional: check if current_user is admin
+    if current_user.role != 'admin':
+        return "Unauthorized", 403
+
+    users = User.query.all()
+    jobs = JobPost.query.all()
+    applications = Application.query.all()
+
+    return render_template('admin_dashboard.html', users=users, jobs=jobs, applications=applications)
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))

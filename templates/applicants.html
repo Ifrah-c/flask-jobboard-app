@@ -4,7 +4,7 @@
 
 {% if applicants %}
 <div>
-    <ul class="list-group">
+    <ul class="list-group row g-3 mb-4 mt-4">
         {% for app in applicants %}
         <li class="list-group-item">
             <h5>{{ app.seeker.name }} ({{ app.seeker.email }})</h5>
